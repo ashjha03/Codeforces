@@ -37,8 +37,8 @@ using namespace std;
 
 int main() {
     start;
-    ll t; cin>>t;
-    while(t--){
+    // ll t; cin>>t;
+    // while(t--){
     	ll a, b, n; cin>>a>>b>>n;
     	bool exist(false);
 		rep(i, 0, 10){
@@ -53,6 +53,6 @@ int main() {
 	    if (!exist){
 	        cout << -1 << endl;
 	    }
-    }
+    // }
 	return 0;
 }
