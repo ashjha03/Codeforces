@@ -68,6 +68,8 @@ ll lcm(ll a, ll b){
 
 
 // No. Of String of length N, not having 0100 as a substring
+
+// METHOD - 1
 ll n;
 int dp[100010][16];
 ll rec(ll level, ll last3){
@@ -97,8 +99,32 @@ void solve(){
 	prt(rec(0, 0));
 }
  
- 
- 
+
+// METHOD - 2
+ll n;
+int dp[100010][5];
+ll rec(ll level, ll match){
+	// Pruning
+	if(match == 4)	return 0;
+	// Base Case
+	if(level == n)	return 1;
+	// Cache Check
+	if(dp[level][match] != -1)	return dp[level][match];
+	// Compute
+	int ans = 0;
+	if(match == 0){
+		ans = rec(level+1, 1) + rec(level+1, 0);
+	} else if(match == 1){
+		ans = rec(level+1, 1) + rec(level+1, 2);
+	} else if(match == 2){
+		ans = rec(level+1, 3) + rec(level+1, 0);
+	} else if(match == 3){
+		ans = rec(level+1, 4) + rec(level+1, 2);
+	}
+	// Save and Return
+	return dp[level][match] = ans;
+}
+
 
  
  
